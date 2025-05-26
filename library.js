@@ -18,8 +18,15 @@ function addBookToLibrary(title, author, pages,status){
     return createBook
 }
 
-// let me create some objects to test this functionliity
-
-//console.log(addBookToLibrary('Marco','Gab', 56,true))
+addBookToLibrary('Marco','Gab', 56,true)
 addBookToLibrary('Jerry','Mark',57,false)
-
+addBookToLibrary('Habits','Yello',57,false)
+addBookToLibrary('Devil','Lorna',57,true)
+addBookToLibrary('Laws','Chelsea',357,true)
+// let us loop through the objects in the arr
+const listBooks = () => {
+    for(let book of myLibrary){
+        console.log(book)
+    }
+}
+listBooks()
