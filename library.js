@@ -1,4 +1,4 @@
-
+const bookListings = document.getElementById('booklist');
 
 
 const myLibrary = [];
@@ -20,15 +20,37 @@ function addBookToLibrary(title, author, pages,status){
     return createBook
 }
 
-addBookToLibrary('Marco','Gab', 56,true)
-addBookToLibrary('Jerry','Mark',57,false)
-addBookToLibrary('Habits','Yello',57,false)
-addBookToLibrary('Devil','Lorna',57,true)
-addBookToLibrary('Laws','Chelsea',357,true)
 // let us loop through the objects in the arr
 const listBooks = () => {
     for(let book of myLibrary){
-        console.log(book)
+        return book
     }
 }
-listBooks()
+
+// function to display the books in the library
+function displayBooks(){
+    bookListings.innerHTML = ''; // clear the book listings
+    myLibrary.forEach((book) => {
+        const bookItem = document.createElement('div');
+        bookItem.classList.add('book-item');
+        bookItem.innerHTML = `
+            <h3>${book.title}</h3>
+            <p>Author: ${book.author}</p>
+            <p>Pages: ${book.pages}</p>
+            <p>Status: ${book.status ? 'Read' : 'Not Read'}</p>
+            <button class="remove-btn" onclick="removeBook('${book.id}')">Remove</button>
+        `;
+        bookListings.appendChild(bookItem);
+    });
+}
+
+
+
+
+
+function openForm(){
+    document.getElementById('myForm').style.display ="block"
+}
+function closeForm(){
+    document.getElementById('myForm').style.display='none';
+}
