@@ -1,5 +1,23 @@
-const bookListings = document.getElementById('booklist');
+const bookListings = document.getElementById('bookList');
+const formSubmit = document.getElementById('myForm');
 
+// Function to handle form submission
+formSubmit.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const status = document.getElementById('status').checked; // Get the status checkbox value
+
+    if (title && author && pages) {
+        addBookToLibrary(title, author, pages, status); // Add book to library
+        displayBooks(); // Display updated book listings
+        closeForm(); // Close the form
+        formSubmit.reset(); // Reset the form fields
+    } else {
+        alert("Please fill in all fields.");
+    }
+});
 
 const myLibrary = [];
 // create a constructor object
@@ -20,13 +38,6 @@ function addBookToLibrary(title, author, pages,status){
     return createBook
 }
 
-// let us loop through the objects in the arr
-const listBooks = () => {
-    for(let book of myLibrary){
-        return book
-    }
-}
-
 // function to display the books in the library
 function displayBooks(){
     bookListings.innerHTML = ''; // clear the book listings
@@ -43,10 +54,6 @@ function displayBooks(){
         bookListings.appendChild(bookItem);
     });
 }
-
-
-
-
 
 function openForm(){
     document.getElementById('myForm').style.display ="block"
