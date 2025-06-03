@@ -2,21 +2,17 @@ const bookListings = document.getElementById('bookList');
 const formSubmit = document.getElementById('myForm');
 
 // Function to handle form submission
-formSubmit.addEventListener('submit', function(event) {
+formSubmit.addEventListener('submit', (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
-    const status = document.getElementById('status').checked; // Get the status checkbox value
-
-    if (title && author && pages) {
-        addBookToLibrary(title, author, pages, status); // Add book to library
+    const status = document.getElementById('read').value; // Get the status checkbox value
+        addBookToLibrary(title, author, pages,status); // Add book to library
         displayBooks(); // Display updated book listings
         closeForm(); // Close the form
-        formSubmit.reset(); // Reset the form fields
-    } else {
-        alert("Please fill in all fields.");
-    }
+        //formSubmit.reset(); // Reset the form fields
+    
 });
 
 const myLibrary = [];
