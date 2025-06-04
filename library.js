@@ -1,20 +1,3 @@
-const bookListings = document.querySelector('.book-item');
-const formSubmit = document.getElementById('myForm');
-
-// Function to handle form submission
-formSubmit.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    const pages = document.getElementById('pages').value;
-    const status = document.getElementById('read').value; // Get the status checkbox value
-        addBookToLibrary(title, author, pages,status); // Add book to library
-        displayBooks(); // Display updated book listings
-        closeForm(); // Close the form
-        //formSubmit.reset(); // Reset the form fields
-    
-});
-
 const myLibrary = [];
 // create a constructor object
 class Book{
@@ -24,7 +7,7 @@ class Book{
         this.title = title;
         this.author = author;
         this.pages = pages;
-        this.status = status
+        this.status = status;
     }
 }
 // The method serves to create objects dynmically and store them on the go
@@ -33,24 +16,19 @@ function addBookToLibrary(title, author, pages,status){
     myLibrary.push(createBook) // add objects created to the array.
     return createBook
 }
-console.log(myLibrary);
+console.log(addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 310, 'Read')); // add a book to the library
+console.log(addBookToLibrary('1984', 'George Orwell', 328, 'Not Read')); // add another book to the library
+// create a form to add books to the library
 
 // function to display the books in the library
 function displayBooks(){
-    bookListings.innerHTML = ''; // clear the book listings
-    myLibrary.forEach((book) => {
-        const bookItem = document.createElement('div');
-        bookItem.classList.add('book-item');
-        bookItem.innerHTML = `
-            <h3>${book.title}</h3>
-            <p>Author: ${book.author}</p>
-            <p>Pages: ${book.pages}</p>
-            <p>Status: ${book.status ? 'Read' : 'Not Read'}</p>
-            <button class="remove-btn" onclick="removeBook('${book.id}')">Remove</button>
-        `;
-        bookListings.appendChild(bookItem);
-    });
+    for (let i = 0; i < myLibrary.length; i++) {
+        const book = myLibrary[i];
+        //console.log(`ID: ${book.id}`); // Display the ID of the book
+        return(`Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Status: ${book.status}`);
+    }
 }
+displayBooks(); // display the books in the library
 
 function openForm(){
     document.getElementById('myForm').style.display ="block"
