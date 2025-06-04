@@ -8,35 +8,34 @@
 </head>
 <body>
     <div class="button-section">
-        <div class="btn"onclick="openForm()">Add Book</div>
+        <div class="btn"onclick="">Add Book</div>
     </div>
     <div class="books">
         <h2>Book List</h2>
-        <ul id="bookList">
+        <ul class="book-item">
             <!-- Book items will be added here dynamically -->
         </ul>
     </div>
     <div class="form-popup" id="myForm">
-        <form class="form-container" action="" method="post">
+        <form class="form-container" action="" method="POST">
             <h1>Add Book</h1>
 
-            <label for="title"><b>Title</b></label>
+            <label for="title" id="title"><b>Title</b></label>
             <input type="text" placeholder="Enter Book Title" name="title" required>
 
-            <label for="author"><b>Author</b></label>
+            <label for="author" id="author"><b>Author</b></label>
             <input type="text" placeholder="Enter Author Name" name="author" required>
 
-            <label for="pages"><b>Pages</b></label>
+            <label for="pages" id="pages"><b>Pages</b></label>
             <input type="text" placeholder="Enter Number of Pages" name="pages" required>
 
-            <label for="read"><b>Read</b></label>
+            <label for="read" id="read"><b>Read</b></label>
             <select id="read" name="read" required>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select><br/><br/>
-
-            <button type="submit" class="" onclick="submitForm(event)">Submit Book</button>
-            <button type="button" class="" onclick="closeForm()">Close</button>
+            <button type="submit" class="">Submit Book</button>
+            <button type="button" class="" onclick="">Close</button>
         </form>
     </div>
     <script src="library.js"></script>

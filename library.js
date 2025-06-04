@@ -1,4 +1,4 @@
-const bookListings = document.getElementById('bookList');
+const bookListings = document.querySelector('.book-item');
 const formSubmit = document.getElementById('myForm');
 
 // Function to handle form submission
@@ -33,6 +33,7 @@ function addBookToLibrary(title, author, pages,status){
     myLibrary.push(createBook) // add objects created to the array.
     return createBook
 }
+console.log(myLibrary);
 
 // function to display the books in the library
 function displayBooks(){
