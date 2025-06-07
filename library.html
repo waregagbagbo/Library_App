@@ -8,9 +8,13 @@
 </head>
 <body>
     <div class="main-container">
-           <div class="library-header">
-            <h1>Library</h1>
-            <ul class="library-listings"></ul>
+           <div class="library">
+        <h1>Library</h1>
+            <div class="ul">
+                <ul id="library-listings">
+                    <!-- Book items will be dynamically added here -->
+                </ul>
+            </div>
         </div>
         <div class="form-div">
             <div class="form-popup" id="myForm">
@@ -32,7 +36,7 @@
                         <option value="not-read">Not Read</option>
                     </select><br/><br/>
                     <button type="submit" class="submit-btn">Submit Book</button>   
-                    <button type="button" class="cancel" onclick="">Close</button>
+                    <button type="button" class="cancel" onclick="clearForm()">Clear</button>
                 </form>
             </div>
         </div>

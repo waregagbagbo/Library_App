@@ -18,18 +18,6 @@ function addBook(title, author, pages,status){
     myLibrary.push(createBook) // add objects created to the array.
     return createBook
 }
-//console.log(addBook('The Hobbit', 'J.R.R. Tolkien', 310, 'Read')); // add a book to the library
-
-
-// function to display the books in the library
-/*function displayBooks(){
-    for (let i = 0; i < myLibrary.length; i++) {
-        const book = myLibrary[i];
-        return `ID: ${book.id}, Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Status: ${book.status}`;
-    }
-}
-console.log(displayBooks()); // display the books in the library*/
-
 
 // We will create a form to add books to the library via DOM manipulation
 const btn = document.getElementById('myForm');
@@ -46,18 +34,27 @@ btn.addEventListener('submit', (e) => {
     // validate the input values by creating the book object
     addBook(title, author, pages, status); // add the book to the library
     bookDisplay(); // display the books in the library
-   //btn.reset(); // reset the form after submission
+
 });
 
 // let us display the books in the library on the page
 // using the existing class in Html and and bookDisplay function
 function bookDisplay() {
-    const bookList = document.querySelector('.library-listings');
-    bookList.innerHTML = ''; // clear the list before displaying
+    const bookList = document.getElementById('library-listings');
+    //bookList.innerHTML = ''; // clear the list before displaying
     // iterate through the myLibrary array and create list items for each book
     myLibrary.forEach(book => {
         const bookItem = document.createElement('li');
-        bookItem.textContent = `ID: ${book.id}, Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Status: ${book.status}`;
+        bookItem.textContent = `Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Status: ${book.status}`;
         bookList.appendChild(bookItem);
     });
+}
+
+// Function to delete a book from the library
+function deleteBook(id) {
+    const bookIndex = myLibrary.findIndex(book => book.id === id);
+    if (bookIndex !== -1) {
+        myLibrary.splice(bookIndex, 1);
+        bookDisplay();
+    }
 }
