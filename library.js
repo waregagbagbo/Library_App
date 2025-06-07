@@ -16,23 +16,36 @@ function addBookToLibrary(title, author, pages,status){
     myLibrary.push(createBook) // add objects created to the array.
     return createBook
 }
-console.log(addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 310, 'Read')); // add a book to the library
-console.log(addBookToLibrary('1984', 'George Orwell', 328, 'Not Read')); // add another book to the library
-// create a form to add books to the library
+//addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 310, 'Read'); // add a book to the library
+
 
 // function to display the books in the library
 function displayBooks(){
     for (let i = 0; i < myLibrary.length; i++) {
         const book = myLibrary[i];
-        //console.log(`ID: ${book.id}`); // Display the ID of the book
-        return(`Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Status: ${book.status}`);
+        return `ID: ${book.id}, Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Status: ${book.status}`;
     }
 }
-displayBooks(); // display the books in the library
 
-function openForm(){
-    document.getElementById('myForm').style.display ="block"
-}
-function closeForm(){
-    document.getElementById('myForm').style.display='none';
-}
+// We will create a form to add books to the library via DOM manipulation
+const btn = document.getElementById('myForm');
+const listings = document.querySelector('.library-listings');
+// add an event listener to the form to handle the submission
+myForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // prevent the default form submission
+
+    // get input values from the form
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const status = document.getElementById('status').value;
+
+    // validate the input values by creating the book object
+    addBookToLibrary(title, author, pages, status); // add the book to the library
+});
+
+// let us add display books via createElement in dom manipulation
+const bookList = document.createElement('div');
+bookList.classList.add('library-listings');
+document.body.appendChild(bookList);
+
