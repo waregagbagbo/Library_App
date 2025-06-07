@@ -10,28 +10,31 @@ class Book{
         this.status = status;
     }
 }
+
+
 // The method serves to create objects dynmically and store them on the go
-function addBookToLibrary(title, author, pages,status){
+function addBook(title, author, pages,status){
     const createBook = new Book(title, author,pages,status) // create object
     myLibrary.push(createBook) // add objects created to the array.
     return createBook
 }
-//addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 310, 'Read'); // add a book to the library
+//console.log(addBook('The Hobbit', 'J.R.R. Tolkien', 310, 'Read')); // add a book to the library
 
 
 // function to display the books in the library
-function displayBooks(){
+/*function displayBooks(){
     for (let i = 0; i < myLibrary.length; i++) {
         const book = myLibrary[i];
         return `ID: ${book.id}, Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Status: ${book.status}`;
     }
 }
+console.log(displayBooks()); // display the books in the library*/
+
 
 // We will create a form to add books to the library via DOM manipulation
 const btn = document.getElementById('myForm');
-const listings = document.querySelector('.library-listings');
 // add an event listener to the form to handle the submission
-myForm.addEventListener('submit', (e) => {
+btn.addEventListener('submit', (e) => {
     e.preventDefault(); // prevent the default form submission
 
     // get input values from the form
@@ -41,11 +44,20 @@ myForm.addEventListener('submit', (e) => {
     const status = document.getElementById('status').value;
 
     // validate the input values by creating the book object
-    addBookToLibrary(title, author, pages, status); // add the book to the library
+    addBook(title, author, pages, status); // add the book to the library
+    bookDisplay(); // display the books in the library
+   //btn.reset(); // reset the form after submission
 });
 
-// let us add display books via createElement in dom manipulation
-const bookList = document.createElement('div');
-bookList.classList.add('library-listings');
-document.body.appendChild(bookList);
-
+// let us display the books in the library on the page
+// using the existing class in Html and and bookDisplay function
+function bookDisplay() {
+    const bookList = document.querySelector('.library-listings');
+    bookList.innerHTML = ''; // clear the list before displaying
+    // iterate through the myLibrary array and create list items for each book
+    myLibrary.forEach(book => {
+        const bookItem = document.createElement('li');
+        bookItem.textContent = `ID: ${book.id}, Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Status: ${book.status}`;
+        bookList.appendChild(bookItem);
+    });
+}
