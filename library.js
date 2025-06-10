@@ -46,6 +46,11 @@ function bookDisplay() {
     myLibrary.forEach(book => {
         const bookItem = document.createElement('li');
         bookItem.textContent = `Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Status: ${book.status}`;
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.setAttribute('data-index', book.id);
+        deleteBtn.textContent = 'Remove Book';
+        bookItem.appendChild(deleteBtn);
         bookList.appendChild(bookItem);
     });
 }
