@@ -51,6 +51,9 @@ function bookDisplay() {
         deleteBtn.setAttribute('data-index', book.id);
         deleteBtn.textContent = 'Remove Book';
         bookItem.appendChild(deleteBtn);
+        deleteBtn.addEventListener('click', () => {
+            deleteBook(book.id); // call the deleteBook function with the book id
+        });
         bookList.appendChild(bookItem);
     });
 }
