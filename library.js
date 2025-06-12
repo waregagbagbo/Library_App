@@ -11,7 +11,6 @@ class Book{
     }
 }
 
-
 // The method serves to create objects dynmically and store them on the go
 function addBook(title, author, pages,status){
     const createBook = new Book(title, author,pages,status) // create object
@@ -41,7 +40,7 @@ btn.addEventListener('submit', (e) => {
 // using the existing class in Html and and bookDisplay function
 function bookDisplay() {
     const bookList = document.getElementById('library-listings');
-    //bookList.innerHTML = ''; // clear the list before displaying
+    bookList.innerHTML = ''; // clear the list before displaying
     // iterate through the myLibrary array and create list items for each book
     myLibrary.forEach(book => {
         const bookItem = document.createElement('li');
