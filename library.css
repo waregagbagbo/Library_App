@@ -10,8 +10,21 @@ root{
     --tertiary-color:#ecf0f1;
     --font-color:#000;
     --font-family:'Arial', sans-serif;
+    --font-weight:normal;
     --font-size:0.8rem;
 }
+/* body styling */
+body{
+    background-color: var(--tertiary-color);
+    color: var(--font-color);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+    font-size: var(--font-size);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
 /*library display styling*/
 .library{
     display:grid;
