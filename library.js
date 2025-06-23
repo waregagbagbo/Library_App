@@ -34,7 +34,7 @@ function addBook(title, author, pages,status){
 const btn = document.getElementById('myForm');
 // add an event listener to the form to handle the submission
 btn.addEventListener('submit', (e) => {
-    e.preventDefault(); // prevent the default form submission
+    e.preventDefault(); // prevent the default form submission/ reload the page
 
     // get input values from the form
     const title = document.getElementById('title').value;
@@ -44,23 +44,27 @@ btn.addEventListener('submit', (e) => {
 
     // validate the input values by creating the book object
     addBook(title, author, pages, status); // add the book to the library
-    bookDisplay(); // display the books in the library
+    bookDisplay(); // display the books in the library on the page
 
 });
 
 // let us display the books in the library on the page
-// using the existing class in Html and and bookDisplay function
+// using the existing class in Html and bookDisplay function
 
 function bookDisplay() {
     const bookList = document.getElementById('library-listings');
     bookList.innerHTML = ''; // clear the list before displaying
+
     // iterate through the myLibrary array and create list items for each book
     myLibrary.forEach(book => {
         const bookItem = document.createElement('li');
         bookItem.textContent = `Title: ${book.title}, Author: ${book.author}, Pages: ${book.pages}, Status: ${book.status}`;
+
+        // create a delete button for each book
+        // The button will remove the book from the library when clicked
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('delete-btn');
-        deleteBtn.setAttribute('data-index', book.id);
+        //deleteBtn.setAttribute('data-index', book.id);
         deleteBtn.textContent = 'Remove Book';
 
         // Add event listener to the delete button
