@@ -20,21 +20,22 @@ body{
     font-family: var(--font-family);
     font-weight: var(--font-weight);
     font-size: var(--font-size);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    width:100%;
-    position:relative;
-  
 }
-
 /*library display styling*/
+.main-container{
+    display:flex;
+    justify-content:center;
+    gap:2rem;
+    align-self: flex-start;
+    max-width:1200px;
+    margin:auto;
+}
 .library{
-    display:grid;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
+    flex: 2;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 .ul{
     list-style-type:None;
