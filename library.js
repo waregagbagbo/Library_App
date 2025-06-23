@@ -1,9 +1,14 @@
-const myLibrary = [];
+// This is a simple library management system that allows you to add, display, and delete books.
+// It uses a constructor function to create book objects and stores them in an array.
+
+const myLibrary = []; // array to store book object created, shelf of books
+
 // create a constructor object
 class Book{
     constructor(title, author,pages,status){
         // grab the object properties
-        this.id = crypto.randomUUID();
+        this.id = crypto.randomUUID(); // generate a unique id for each book
+        // properties of the book object
         this.title = title;
         this.author = author;
         this.pages = pages;
@@ -16,6 +21,9 @@ class Book{
 }
 
 // The method serves to create objects dynmically and store them on the go
+// It takes in the book details as parameters and creates a new book object.
+// It then adds the created book object to the myLibrary array.
+
 function addBook(title, author, pages,status){
     const createBook = new Book(title, author,pages,status) // create object
     myLibrary.push(createBook) // add objects created to the array.
@@ -42,6 +50,7 @@ btn.addEventListener('submit', (e) => {
 
 // let us display the books in the library on the page
 // using the existing class in Html and and bookDisplay function
+
 function bookDisplay() {
     const bookList = document.getElementById('library-listings');
     bookList.innerHTML = ''; // clear the list before displaying
@@ -53,7 +62,7 @@ function bookDisplay() {
         deleteBtn.classList.add('delete-btn');
         deleteBtn.setAttribute('data-index', book.id);
         deleteBtn.textContent = 'Remove Book';
-        
+
         // Add event listener to the delete button
         deleteBtn.addEventListener('click', () => {
             deleteBook(book.id); // call the deleteBook function with the book id
