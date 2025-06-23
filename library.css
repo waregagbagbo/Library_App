@@ -37,6 +37,11 @@ body{
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+.library h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #4CAF50;
+}
 .ul{
     list-style-type:None;
     display:grid;
@@ -44,6 +49,10 @@ body{
     gap: 20px;
     padding: 0;
     margin: 0;
+}
+.ul ul {
+    list-style: none;
+    padding: 0;
 }
 .ul li{
     background-color: var(--main-color);
@@ -54,39 +63,53 @@ body{
     transition: transform 0.2s;
     list-style-type: none;
 } 
-#library-listings{
-   padding: 0;
-   margin: 0;
-   display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-   gap: 20px;
-   background-color: var(--secondary-color);
+#library-listings li{
+    background-color: #e9f5ee;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-left: 5px solid #4CAF50;
+    border-radius: 4px;
+    transition: transform 0.2s;
 }
+
+#library-listings li:hover {
+    transform: scale(1.02);
+}
+
+   
 /* end of library display styling*/
 .sidebar{
-    width:100%;
-    height:100%;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background-color: var(--main-color);
-} 
+    flex:1;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
-/* buttons styling*/
-.submit-btn, .cancel{
-    border-radius:5px;
-    background-color: aqua;
-    text-align:center;
-    text-decoration:none;
-    position:relative;
-    font-size:1rem;
-    
-      
+} 
+/* Form styles */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
-.submit-btn:hover{
-    cursor:pointer;
-    background-color: brown;
-    color:#fff;
+.form-container h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+.form-container label {
+    font-weight: bold;
+}
+.form-container input,
+.form-container select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
     font-size: 1rem;
+}
+.form-container input:focus,
+.form-container select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
