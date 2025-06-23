@@ -7,7 +7,11 @@ class Book{
         this.title = title;
         this.author = author;
         this.pages = pages;
-        this.status = status;
+        this.status = status; // read or Not Read
+    }
+    // create a method to toggle the status of the book
+    toggleStatus() {
+        this.status = this.status === 'Read' ? 'Not Read' : 'Read';
     }
 }
 
@@ -49,10 +53,24 @@ function bookDisplay() {
         deleteBtn.classList.add('delete-btn');
         deleteBtn.setAttribute('data-index', book.id);
         deleteBtn.textContent = 'Remove Book';
-        bookItem.appendChild(deleteBtn);
+        
+        // Add event listener to the delete button
         deleteBtn.addEventListener('click', () => {
             deleteBook(book.id); // call the deleteBook function with the book id
         });
+
+        // Toggle Status button
+        const toggleBtn = document.createElement('button');
+        toggleBtn.classList.add('toggle-btn');
+        toggleBtn.textContent = 'Toggle Status';
+        toggleBtn.addEventListener('click', () => {
+            book.toggleStatus();  // toggle the read status
+            bookDisplay();        // refresh the list
+        });
+
+        // Append buttons
+        bookItem.appendChild(deleteBtn);
+        bookItem.appendChild(toggleBtn);
         bookList.appendChild(bookItem);
     });
 }
